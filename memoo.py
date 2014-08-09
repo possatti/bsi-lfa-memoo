@@ -4,7 +4,7 @@
 Autor: Lucas Possatti
 '''
 
-import sexpr
+import sexp
 import converter
 import sys
 
