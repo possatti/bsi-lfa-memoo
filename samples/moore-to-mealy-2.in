@@ -11,7 +11,7 @@
     (q1 q1l b)
     (q1l q1 a)
     (q1l q0 b))
-  (out-fn 
+  (out-fn
     (q0 ())
     (q1 0)
     (q1l 1)))
