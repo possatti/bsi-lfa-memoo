@@ -1,0 +1,10 @@
+(moore
+(symbols-in b a )
+(symbols-out v u )
+(states q2 q1 q2* q0 q1* )
+(start q0 )
+(finals )
+(trans
+(q1* q2* a ) (q1 q2* a ) (q2 q1* b ) (q2* q1* b ) (q0 q1 a ) (q0 q2 b ) 
+(out-fn
+(q2* u ) (q2 v ) (q0 () ) (q1 u ) (q1* v ) ) )

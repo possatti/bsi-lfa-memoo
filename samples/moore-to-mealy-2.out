@@ -1,0 +1,8 @@
+(mealy
+(symbols-in b a )
+(symbols-out 1 0 )
+(states q1l q1 q0 )
+(start q0 )
+(finals q1l q1 )
+(trans
+(q0 q1 a () ) (q1 q0 a 0 ) (q1l q0 b 1 ) (q0 q1 b () ) (q1l q1 a 1 ) (q1 q1l b 0 ) ) )
