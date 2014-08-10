@@ -4,6 +4,8 @@ de máquinas.
 Autor: Lucas Possatti
 '''
 
+import re
+
 def mealy_to_moore(me):
 	'''Converte o parâmetro 'me' (que deve ser uma máquina Mealy) para
 	uma máquina de Moore, que é retornada.
@@ -57,7 +59,7 @@ def mealy_to_moore(me):
 				out_fn.append([new_state, output])
 				i += 1
 		# Se o estado tem um único output.
-		else:
+		elif len(state_outputs[state]) == 1:
 			# Adiciona o estado, a lista de estados da nova máquina
 			moore_states.append(state)
 
@@ -67,13 +69,33 @@ def mealy_to_moore(me):
 
 			# Forma a tupla para a função de saída (out-fn).
 			out_fn.append([state, output])
+		# Caso o estado não tenha qualquer output (como por exemplo, se
+		# não houver qualquer transição com destino a ele).
+		else:
+			# Adiciona o estado, a lista de estados da nova máquina
+			moore_states.append(state)
+
+			# Forma a tupla para a função de saída (out-fn), no caso
+			# o estado não tem qualquer saída.
+			out_fn.append([state, []])
 
 	# Gera as transições necessárias para a máquina de moore.
 	moore_trans = []
 	for trans in me[6][1:]:
 		for new_state in moore_states:
-			if trans[1] in new_state:
-				moore_trans.append([trans[0], new_state, trans[2]])
+			for fn in out_fn:
+				#!#print(trans, ":", new_state, ":", fn, "=", re.match("^" + trans[1] + r"\**", new_state) and re.match("^" + trans[1] + r"\**", fn[0]) and trans[3] == fn[1])
+				# Usa os vários dados já obtidos para verificar como as
+				# transições para a máquina de moore devem ser criadas
+				# e quais delas devem ser consideradas.
+				if re.match("^" + trans[1] + r"\**", new_state) and re.match("^" + trans[1] + r"\**", fn[0]) and trans[3] == fn[1]:
+					# Forma a transição que será adicionada.
+					temp_trans = [trans[0], fn[0], trans[2]]
+
+					# Adciona a nova transição, somente se ele já não tiver
+					# sido adicionada.
+					if temp_trans not in moore_trans:
+						moore_trans.append(temp_trans)
 
 	moo.append(["symbols-in"] + me[1][1:])
 	moo.append(["symbols-out"] + me[2][1:])
