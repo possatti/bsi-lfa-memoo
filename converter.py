@@ -97,11 +97,20 @@ def mealy_to_moore(me):
 					if temp_trans not in moore_trans:
 						moore_trans.append(temp_trans)
 
+	# Define os estados que são finais. Que a princípio, são todos os da
+	# máquina de mealy, com a diferença de que é necessário observar se
+	# os estados que foram criados (com '*') também são finais.
+	moore_finals = []
+	for final in me[5][1:]:
+		for moo_state in moore_states:
+			if re.match("^" + final + r"\**", moo_state):
+				moore_finals.append(moo_state)
+
 	moo.append(["symbols-in"] + me[1][1:])
 	moo.append(["symbols-out"] + me[2][1:])
 	moo.append(["states"] + moore_states)
 	moo.append(["start"] + [me[4][1]])
-	moo.append(["finals"] + me[5][1:])
+	moo.append(["finals"] + moore_finals)
 	moo.append(["trans"] + moore_trans)
 	moo.append(["out-fn"] + out_fn)
 
