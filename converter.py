@@ -29,14 +29,17 @@ def mealy_to_moore(me):
 	# vazio para seus valores.
 	state_outputs = {}
 	for state in me[3][1:]:
-		state_outputs[state] = set()
+		state_outputs[state] = []
 
 	# Busca as saídas que são geradas com a transição para cada um dos estados.
 	for trans in me[6][1:]:
 		# Verifica se o estado de destino está no dicionário 'state_outputs'.
 		if trans[1] not in state_outputs:
 			raise "Some transition state destination is not declared in the machine definition (states section). Malformed machine definition."
-		state_outputs[trans[1]] = state_outputs[trans[1]].union([trans[3]])
+
+		# Adiciona a saída a lista do estado, somente se já não tiver sido adicionada.
+		if trans[3] not in state_outputs[trans[1]]:
+			state_outputs[trans[1]].append(trans[3])
 
 	# Define quais serão os novos estados na máquina de moore.
 	moore_states = []
@@ -63,10 +66,8 @@ def mealy_to_moore(me):
 			# Adiciona o estado, a lista de estados da nova máquina
 			moore_states.append(state)
 
-			# Desempacota o conjunto para pegar o seu único elemento que é a
-			# saída que o estado deverá gerar.
-			(output, ) = state_outputs[state]
-
+			# Pega a única saída desse estado.
+			output = state_outputs[state][0]
 			# Forma a tupla para a função de saída (out-fn).
 			out_fn.append([state, output])
 		# Caso o estado não tenha qualquer output (como por exemplo, se
@@ -84,7 +85,7 @@ def mealy_to_moore(me):
 	for trans in me[6][1:]:
 		for new_state in moore_states:
 			for fn in out_fn:
-				#!#print(trans, ":", new_state, ":", fn, "=", re.match("^" + trans[1] + r"\**", new_state) and re.match("^" + trans[1] + r"\**", fn[0]) and trans[3] == fn[1])
+				#!#print(trans, ":", new_state, ":", fn, "=", re.match("^" + trans[1] + r"\**", new_state) and re.match("^" + trans[1] + r"\**", fn[0]) and trans[3] == fn[1])#!#
 				# Usa os vários dados já obtidos para verificar como as
 				# transições para a máquina de moore devem ser criadas
 				# e quais delas devem ser consideradas.
