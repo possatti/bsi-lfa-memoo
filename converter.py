@@ -5,6 +5,7 @@ Autor: Lucas Possatti
 '''
 
 import re
+import collections
 
 def mealy_to_moore(me):
 	'''Converte o parâmetro 'me' (que deve ser uma máquina Mealy) para
@@ -27,7 +28,7 @@ def mealy_to_moore(me):
 
 	# Inicia um dicionário, com todos os estados como chaves, e um conjunto
 	# vazio para seus valores.
-	state_outputs = {}
+	state_outputs = collections.OrderedDict()
 	for state in me[3][1:]:
 		state_outputs[state] = []
 
