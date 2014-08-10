@@ -1,1 +1,7 @@
+# Arquivos de cache do interpretador.
 __pycache__/
+
+# Arquivos do cram.
+*.t.err
+*.t.rej
+*.t.orig
