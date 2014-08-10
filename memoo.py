@@ -68,7 +68,7 @@ else:
 	exit(1)
 
 # Joga a máquina convertida, de volta para uma S-Expression.
-final_sexp = sexp.print_sexp(converted_machine) + "\n"
+final_sexp = sexp.print_sexp(converted_machine)
 
 # Escreve no arquivo ou imprime a máquina já convertida.
 if options.outputfile_name == "--":
@@ -77,4 +77,4 @@ if options.outputfile_name == "--":
 else:
 	# Escreve o resultado em um arquivo.
 	with open(options.outputfile_name, 'w') as f:
-		f.write(final_sexp)
+		f.write(final_sexp + "\n")
