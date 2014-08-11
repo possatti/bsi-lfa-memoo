@@ -1,9 +1,9 @@
 Testa se o programa funciona da mesma forma, tanto para arquivos passados
-por pipe, quanto para arquivos indicados pelas opções.
+por pipe, quanto para arquivos indicados pelas opcoes.
 
-Os testes feitos aqui, são com exemplos retirados do livro.
+Os testes feitos aqui, sao com exemplos retirados do livro.
 
-Escreve os arquivos de teste.
+Escreve os arquivos de teste:
   $ cat > book-mealy-to-moore.in << EOF
   > (mealy
   >   (symbols-in a1 ai an b)
@@ -24,15 +24,15 @@ Escreve os arquivos de teste.
   >   (out-fn (q0 u0) (q1 u1)))
   > EOF
 
-Testa a conversão de mealy para moore. Usando os dois métodos, para verificar
-se eles gerão o mesmo resultado.
+Testa a conversao de mealy para moore. Usando os dois metodos, para verificar
+se eles gerao o mesmo resultado:
   $ $TESTDIR/../memoo.py < book-mealy-to-moore.in > book-mealy-to-moore.outstd
   $ $TESTDIR/../memoo.py -i book-mealy-to-moore.in -o book-mealy-to-moore.outfile
   $ diff -s book-mealy-to-moore.outstd book-mealy-to-moore.outfile
   Files book-mealy-to-moore.outstd and book-mealy-to-moore.outfile are identical
 
-Testa a conversão de moore para mealy. Usando os dois métodos, para verificar
-se eles gerão o mesmo resultado.
+Testa a conversao de moore para mealy. Usando os dois metodos, para verificar
+se eles gerao o mesmo resultado:
   $ $TESTDIR/../memoo.py < book-moore-to-mealy.in > book-moore-to-mealy.outstd
   $ $TESTDIR/../memoo.py -i book-moore-to-mealy.in -o book-moore-to-mealy.outfile
   $ diff -s book-moore-to-mealy.outstd book-moore-to-mealy.outfile
