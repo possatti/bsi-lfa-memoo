@@ -1,0 +1,9 @@
+## Arquivo de configuração do travis (travis-ci.org). 
+
+language: python
+python:
+  - "3.2"
+  - "3.4"
+
+install: pip install cram
+script: cram tests/
