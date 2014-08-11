@@ -1,24 +1,24 @@
 # memoo
 
-Programa simples feito em python para a convers„o de m·quinas de Mealy para m·quinas de Moore e vice versa. O nome (memoo) vem das primeiras letras dos nomes Mealy e Moore. O cÛdigo est· hospedado nesse link: https://github.com/possatti/memoo
+Programa simples feito em python para a convers√£o de m√°quinas de Mealy para m√°quinas de Moore e vice versa. O nome (memoo) vem das primeiras letras dos nomes Mealy e Moore. O c√≥digo est√° hospedado nesse link: https://github.com/possatti/memoo
 
 ## Autor
 
-Eu (Lucas Possatti) sou o autor de todo o cÛdigo nesse projeto, com excess„o do arquivo `sexp.py` na raiz do projeto, que usei para fazer o parsing das S-Expressions.
+Eu (Lucas Possatti) sou o autor de todo o c√≥digo nesse projeto, com excess√£o do arquivo `sexp.py` na raiz do projeto, que usei para fazer o parsing das S-Expressions.
 
-O cÛdigo do arquivo `sexp.py` foi obitido [nesse link][http://rosettacode.org/wiki/S-Expressions#Python]. E fiz apenas algumas modificaÁıes nele. Apesar disso, n„o assumo qualquer crÈdito sobre esse cÛdigo, e infelizmente no link eu n„o encontrei qualquer menÁ„o ao verdadeiro autor. Ent„o deixo apenas o link.
+O c√≥digo do arquivo `sexp.py` foi obitido [nesse link](http://rosettacode.org/wiki/S-Expressions#Python). E fiz apenas algumas modifica√ß√µes nele. Apesar disso, n√£o assumo qualquer cr√©dito sobre esse c√≥digo, e infelizmente no link eu n√£o encontrei qualquer men√ß√£o ao verdadeiro autor. Ent√£o deixo apenas o link.
 
-Com excess„o desse arquivo todo o resto do cÛdigo È de minha autoria.
+Com excess√£o desse arquivo todo o resto do c√≥digo √© de minha autoria.
 
-## DescriÁ„o do projeto
+## Descri√ß√£o do projeto
 
-O projeto foi realizado como uma atividade da disciplina de Linguagens Formais e Automatos (LFA) do meu curso. O objetivo È criar um programa que leia uma definiÁ„o de uma m·quina de Mealy ou de Moore e converta para o seu oposto.
+O projeto foi realizado como uma atividade da disciplina de Linguagens Formais e Automatos (LFA) do meu curso. O objetivo √© criar um programa que leia uma defini√ß√£o de uma m√°quina de Mealy ou de Moore e converta para o seu oposto.
 
-O projeto foi codificado inteiramente na linguagem Python 3. E apesar do cÛdigo inteiro estar em inglÍs, ele est· todo muito bem documentado em portuguÍs.
+O projeto foi codificado inteiramente na linguagem Python 3. E apesar do c√≥digo inteiro estar em ingl√™s, ele est√° todo muito bem documentado em portugu√™s.
 
-As definiÁıes das m·quinas de Moore e Mealy obedecem a sintaxe de S-Expressions. Eu n„o irei descrever aqui uma definiÁ„o formal, mas vocÍ pode tomar os seguintes exemplos para entender como as m·quinas devem ser definidas:
+As defini√ß√µes das m√°quinas de Moore e Mealy obedecem a sintaxe de S-Expressions. Eu n√£o irei descrever aqui uma defini√ß√£o formal, mas voc√™ pode tomar os seguintes exemplos para entender como as m√°quinas devem ser definidas:
 
-### M·quina de Moore
+### M√°quina de Moore
 
 ```lisp
 (moore
@@ -36,7 +36,7 @@ As definiÁıes das m·quinas de Moore e Mealy obedecem a sintaxe de S-Expressions.
     (q3 1) (q4 0) (q5 1)))
 ```
 
-### M·quina de Mealy
+### M√°quina de Mealy
 
 ```lisp
 (mealy
@@ -50,43 +50,43 @@ As definiÁıes das m·quinas de Moore e Mealy obedecem a sintaxe de S-Expressions.
     (q2 q3 a 0) (q2 q3 b 1) (q3 q0 b 1) (q3 q3 a 1)))
 ```
 
-*ATEN«√O:* Quando vocÍ for definir uma m·quina, vocÍ n„o deve usar asteriscos (*) para compor o nome dos estados, pois isso atrapalharia a conves„o. Isso porque o asterisco È usado na criaÁ„o de novos estados na convers„o de Mealy para Moore. Portanto, n„o use estados que contenham o caracter asterisco no nome, pois o programa os usa internamente.
+*ATEN√á√ÉO:* Quando voc√™ for definir uma m√°quina, voc√™ n√£o deve usar asteriscos (*) para compor o nome dos estados, pois isso atrapalharia a convers√£o. Isso porque o asterisco √© usado na cria√ß√£o de novos estados na convers√£o de Mealy para Moore. Portanto, n√£o use estados que contenham o caracter asterisco no nome, pois o programa os usa internamente.
 
 ## Estrutura do projeto
 
-O projeto se divide basicamente em trÍs arquivos, s„o eles:
- - `memoo.py` : Programa principal. Este È o execut·vel.
- - `converter.py` : Biblioteca com as rotinas de convers„o das m·quinas.
+O projeto se divide basicamente em tr√™s arquivos, s√£o eles:
+ - `memoo.py` : Programa principal. Este √© o execut√°vel.
+ - `converter.py` : Biblioteca com as rotinas de convers√£o das m√°quinas.
  - `sexp.py` : Biblioteca para leitura e escrita de S-Expressions.
 
-Adicionalmente, na pasta `tests`, h· um conjunto de testes que podem ser executados usando a framework [cram][https://bitheap.org/cram/]. Para utilizar a framework, È necess·rio instala-la previamente. Eu sugiro instala-la atravÈs do [pip][https://pypi.python.org/pypi/pip], que talvez j· venha instalado na sua distribuiÁ„o. Assim para instalar o `cram` È necess·rio um ˙nico comando:
+Adicionalmente, na pasta `tests`, h√° um conjunto de testes que podem ser executados usando a framework [`cram`](https://bitheap.org/cram/). Para utilizar a framework, √© necess√°rio instala-la previamente. Eu sugiro instala-la atrav√©s do [`pip`](https://pypi.python.org/pypi/pip), que talvez j√° venha instalado na sua distribui√ß√£o. Assim para instalar o `cram` √© necess√°rio um √∫nico comando:
 
 ```bash
 $ sudo pip install cram
 ```
 
-Para executar os testes, basta executar o `cram` indicando o diretÛrio que contÈm os testes, da seguinte forma:
+Para executar os testes, basta executar o `cram` indicando o diret√≥rio que cont√©m os testes, da seguinte forma:
 
 ```bash
 $ cram tests/
 ```
 
-TambÈm h· uma pasta chamada `samples`, onde est„o trÍs exemplos de m·quinas de Moore e trÍs de Mealy. Inclusive, essas m·quinas foram usadas como base para a elaboraÁ„o dos testes.
+Tamb√©m h√° uma pasta chamada `samples`, onde est√£o tr√™s exemplos de m√°quinas de Moore e tr√™s de Mealy. Inclusive, essas m√°quinas foram usadas como base para a elabora√ß√£o dos testes.
 
 ## Modo de uso
 
-O programa principal (memoo.py) È executado atravÈs da linha de comando, e deve ser interpretado usando um interpretador de Python 3.
+O programa principal (memoo.py) √© executado atrav√©s da linha de comando, e deve ser interpretado usando um interpretador de Python 3.
 
-Se o programa for executado sem qualquer argumento, ele lÍ o standard input em busca da S-Expression com a definiÁ„o de uma m·quina v·lida. E ao conseguir uma leitura v·lida, converte a m·quina e escreve o resultado para o standard output.
+Se o programa for executado sem qualquer argumento, ele l√™ o standard input em busca da S-Expression com a defini√ß√£o de uma m√°quina v√°lida. E ao conseguir uma leitura v√°lida, converte a m√°quina e escreve o resultado para o standard output.
 
-Ou se o usu·rio preferir, È possÌvel indicar arquivos para a leitura e saÌda atravÈs das seguintes opÁıes:
- - -i FILE, --input FILE: Indica o local que contÈm a definiÁ„o da m·quina a ser convertida.
- - -o FILE, --output FILE: Indica o local onde a m·quina convertida dever· ser escrita.
+Ou se o usu√°rio preferir, √© poss√≠vel indicar arquivos para a leitura e sa√≠da atrav√©s das seguintes op√ß√µes:
+ - `-i FILE`, `--input FILE`: Indica o local que cont√©m a defini√ß√£o da m√°quina a ser convertida.
+ - `-o FILE`, `--output FILE`: Indica o local onde a m√°quina convertida dever√° ser escrita.
 
-Assim, um exemplo de uma possÌvel chamada ao programa È:
+Assim, um exemplo de uma poss√≠vel chamada ao programa √©:
 
 ```bash
 $ ./memoo.py -i input-machine.txt -o output-machine.txt
 ```
 
-TambÈm È possÌvel ler um pequeno texto de ajuda atravÈs da opÁ„o `-h`.
+Tamb√©m √© poss√≠vel ler um pequeno texto de ajuda atrav√©s da op√ß√£o `-h`.
